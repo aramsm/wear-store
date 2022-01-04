@@ -1,0 +1,41 @@
+version: "3.3"
+services:
+  wear-store-db:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: wear-store
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: "go run main.go"
+    volumes:
+      - .:/wear-store-vol
+    ports:
+      - "3000:3000"
+    depends_on:
+      - wear-store-db
+    env_file:
+      - .env
+  # migrate:
+  #   build: .
+  #   command: "go run ./cmd/migrate"
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - wear-store-db
+  #   env_file:
+  #     - .env
+
+  # pubsub:
+  #   build: .
+  #   command: "go run ./cmd/pubsub"
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - wear-store-db
+  #   env_file:
+  #     - .env
