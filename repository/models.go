@@ -9,8 +9,8 @@ type Address struct {
 type Employee struct {
 	ID    string `json:"id" gorm:"primaryKey"`
 	Code  string `json:"code" binding:"required"`
-	Name  string `json:"employee_name" binding:"required"`
-	Phone string `json:"employee_phone" binding:"required"`
+	Name  string `json:"name" binding:"required"`
+	Phone string `json:"phone" binding:"required"`
 }
 
 type Store struct {
