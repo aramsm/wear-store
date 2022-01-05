@@ -24,6 +24,19 @@ func ReadAndParseData() []Store {
 	return stores
 }
 
+func GetStore(id string) Store {
+	var store Store
+	stores := ReadAndParseData()
+
+	for _, s := range stores {
+		if s.ID == id {
+			store = s
+		}
+	}
+
+	return store
+}
+
 func logError(e error) {
 	fmt.Println("Error: ", e)
 	os.Exit(1)
