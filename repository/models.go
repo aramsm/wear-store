@@ -1,10 +1,9 @@
 package repository
 
 type Address struct {
-	ID     string `json:"id" gorm:"primaryKey"`
 	City   string `json:"city" binding:"required"`
 	State  string `json:"state" binding:"required"`
-	Street string `json:"street" binding:"required"`
+	Street string `json:"street" binding:"required" gorm:"primaryKey"`
 }
 
 type Employee struct {
