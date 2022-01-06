@@ -8,7 +8,7 @@ import (
 )
 
 func ReadAndParseData() []Store {
-	bs, readErr := ioutil.ReadFile("acme-stores.json")
+	bs, readErr := ioutil.ReadFile("/home/aram.menocci/workspace/wear-store/acme-stores.json")
 
 	if readErr != nil {
 		logError(readErr)
@@ -24,13 +24,24 @@ func ReadAndParseData() []Store {
 	return stores
 }
 
-func GetStore(id string) Store {
-	var store Store
-	stores := ReadAndParseData()
+func GetStoresByBrand(data []Store, brand string) []Store {
+	var result []Store
 
-	for _, s := range stores {
-		if s.ID == id {
-			store = s
+	for i := range data {
+		if data[i].BrandLabel == brand {
+			result = append(result, data[i])
+		}
+	}
+
+	return result
+}
+
+func GetStore(data []Store, id string) Store {
+	var store Store
+
+	for i := range data {
+		if data[i].ID == id {
+			store = data[i]
 
 			return store
 		}
@@ -39,25 +50,23 @@ func GetStore(id string) Store {
 	return store
 }
 
-func GetEmployees() []Employee {
+func GetEmployees(data []Store) []Employee {
 	var employees = make([]Employee, 0)
-	stores := ReadAndParseData()
 
-	for _, s := range stores {
-		employees = append(employees, s.Employees...)
+	for i := range data {
+		employees = append(employees, data[i].Employees...)
 	}
 
 	return employees
 }
 
-func GetEmployee(id string) Employee {
+func GetEmployee(data []Store, id string) Employee {
 	var employee Employee
-	stores := ReadAndParseData()
 
-	for _, s := range stores {
-		for _, e := range s.Employees {
-			if e.ID == id {
-				employee = e
+	for s := range data {
+		for e := range data[s].Employees {
+			if data[s].Employees[e].ID == id {
+				employee = data[s].Employees[e]
 
 				return employee
 			}

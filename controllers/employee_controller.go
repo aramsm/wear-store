@@ -8,9 +8,10 @@ import (
 )
 
 func ShowEmployee(c *gin.Context) {
+	data := repository.ReadAndParseData()
 	id := c.Param("id")
 	log.Printf("Looking for address with id=%v", id)
-	employee := repository.GetEmployee(id)
+	employee := repository.GetEmployee(data, id)
 
 	if employee.ID == "" {
 		c.JSON(404, gin.H{
@@ -26,7 +27,8 @@ func ShowEmployee(c *gin.Context) {
 }
 
 func ListEmployees(c *gin.Context) {
-	employees := repository.GetEmployees()
+	data := repository.ReadAndParseData()
+	employees := repository.GetEmployees(data)
 
 	c.JSON(200, gin.H{
 		"data": employees,
