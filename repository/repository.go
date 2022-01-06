@@ -39,32 +39,6 @@ func GetStore(id string) Store {
 	return store
 }
 
-func GetAddresses() []Address {
-	var addresses = make([]Address, 0)
-	stores := ReadAndParseData()
-
-	for _, d := range stores {
-		addresses = append(addresses, d.Address)
-	}
-
-	return addresses
-}
-
-func GetAdress(street string) Address {
-	var address Address
-	stores := ReadAndParseData()
-
-	for _, s := range stores {
-		if s.Address.Street == street {
-			address = s.Address
-
-			return address
-		}
-	}
-
-	return address
-}
-
 func GetEmployees() []Employee {
 	var employees = make([]Employee, 0)
 	stores := ReadAndParseData()
