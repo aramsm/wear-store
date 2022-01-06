@@ -16,9 +16,9 @@ type Employee struct {
 type Store struct {
 	ID         string     `json:"id" gorm:"primaryKey"`
 	Code       string     `json:"phone"`
-	LabelBrand string     `json:"label_brand" binding:"required"`
-	Name       string     `json:"store_name" binding:"required"`
-	Phone      string     `json:"store_phone"`
+	BrandLabel string     `json:"brand_label" binding:"required"`
+	Name       string     `json:"name" binding:"required"`
+	Phone      string     `json:"phone"`
 	Address    Address    `json:"address"`
 	Employees  []Employee `json:"employees"`
 }
