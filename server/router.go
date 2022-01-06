@@ -7,13 +7,14 @@ import (
 
 func ConfigRoutes(r *gin.Engine) *gin.Engine {
 	v1 := r.Group("api/v1")
-	stores := v1.Group("stores", controllers.ShowStore)
-	addresses := v1.Group("addresses")
+	stores := v1.Group("stores")
 	employees := v1.Group("employees")
 
-	stores.GET("/")
-	addresses.GET("/")
-	employees.GET("/")
+	stores.GET("/", controllers.ListStores)
+	stores.GET("/:id", controllers.ShowStore)
+	stores.GET("brand-label/:brand_label", controllers.ListStoresByBrand)
+	employees.GET("/", controllers.ListEmployees)
+	employees.GET("/:id", controllers.ShowEmployee)
 
 	return r
 }
