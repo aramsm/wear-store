@@ -8,7 +8,7 @@ import (
 )
 
 func ReadAndParseData() []Store {
-	bs, readErr := ioutil.ReadFile("/home/aram.menocci/workspace/wear-store/acme-stores.json")
+	bs, readErr := ioutil.ReadFile("acme-stores.json")
 
 	if readErr != nil {
 		logError(readErr)

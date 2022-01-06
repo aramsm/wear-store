@@ -12,6 +12,7 @@ func ConfigRoutes(r *gin.Engine) *gin.Engine {
 
 	stores.GET("/", controllers.ListStores)
 	stores.GET("/:id", controllers.ShowStore)
+	stores.GET("brand-label/:brand_label", controllers.ListStoresByBrand)
 	employees.GET("/", controllers.ListEmployees)
 	employees.GET("/:id", controllers.ShowEmployee)
 
