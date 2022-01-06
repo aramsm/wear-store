@@ -62,5 +62,25 @@
         "phone": "5531920000003"
       }
     ]
+  },
+  {
+    "id": "77",
+    "code": "109",
+    "brand_label": "umbrela-inc",
+    "name": "STORE 1",
+    "phone": "493190009467",
+    "address": {
+      "city": "Belo Horizonte",
+      "state": "MG",
+      "street": "Rua 876"
+    },
+    "employees": [
+      {
+        "id": "7",
+        "code": "000007",
+        "name": "VENDEDOR 1",
+        "phone": "8631900000001"
+      }
+    ]
   }
 ]
